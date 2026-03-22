@@ -1,0 +1,46 @@
+---
+import '@fontsource/geist-mono';
+import '../styles/global.css';
+
+interface Props {
+	title: string;
+	description?: string;
+}
+
+const { title, description = "Francisco Andrade - Systems Engineering Portfolio" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es" class="bg-black text-white selection:bg-accent/30 selection:text-accent">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title} | Francisco Andrade</title>
+		<meta name="description" content={description} />
+		
+		<!-- OpenGraph -->
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		
+		<!-- JSON-LD -->
+		<script type="application/ld+json">
+			{
+				"@context": "https://schema.org",
+				"@type": "Person",
+				"name": "Francisco Andrade",
+				"jobTitle": "Systems Engineering Student",
+				"affiliation": {
+					"@type": "EducationalOrganization",
+					"name": "UTN FRC"
+				},
+				"url": "https://franciscoandrade.dev"
+			}
+		</script>
+	</head>
+	<body class="font-mono overflow-x-hidden antialiased">
+		<slot />
+	</body>
+</html>
